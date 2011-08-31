@@ -25,6 +25,13 @@
   Join the mailing-list:
   https://lists.process-one.net/mailman/listinfo/tsung-users
 
+  If you are into ejabberd testing, then change the following line
+  in file src/tsung/ts_jabber_common.erl:
+    "' xmlns='jabber:client' version='1.0' xmlns:stream='http://etherx.jabber.org/streams'>"]).
+  to:
+    "' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams'>"]).
+  and recompile.
 
-
-
+  When ejabberd receives the "version='1.0'" attribute it requires
+  compliance with the spec, hence it's no longer possible to use plain auth method.
+  Changing that line solves the problem for load testing purposes.
